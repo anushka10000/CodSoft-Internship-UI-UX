@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anushka Restaurants - Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Navigation -->
+        <header class="header">
+            <div class="logo">
+                <img src="logo.png" alt="Anushka Restaurants Logo" style="width: 40px; height: 40px; border-radius: 50%;">
+                <span class="logo-text">Anushka Restaurants</span>
+            </div>
+            <nav class="navigation">
+                <a href="#" class="nav-link">HOME</a>
+                <a href="#" class="nav-link">ABOUT US</a>
+                <a href="#" class="nav-link">CONTACT</a>
+                <a href="#" class="nav-link sign-up-nav">SIGN UP</a>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Left Side - Chef Image -->
+            <div class="chef-section">
+                <div class="chef-image">
+                    <img src="DISPLAY 1.png" />
+                </div>
+            </div>
+
+            <!-- Right Side - Sign Up Form -->
+            <div class="signup-section">
+                <div class="signup-form-container">
+                    <h2 class="signup-title">Sign up</h2>
+                    
+                    <form class="signup-form">
+                        <div class="form-group">
+                            <label for="fullname" class="form-label">Full Name</label>
+                            <input type="text" id="fullname" name="fullname" class="form-input" placeholder="Enter your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="Enter Your Email" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group half-width">
+                                <label for="password" class="form-label">Password</label>
+                                <div class="password-input-container">
+                                    <input type="password" id="password" name="password" class="form-input" placeholder="••••••••••" required>
+                                    <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group half-width">
+                                <label for="confirm-password" class="form-label">Confirm Password</label>
+                                <div class="password-input-container">
+                                    <input type="password" id="confirm-password" name="confirm-password" class="form-input" placeholder="••••••••••" required>
+                                    <button type="button" class="password-toggle" onclick="togglePassword('confirm-password')">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="signup-button">Create Account</button>
+                        
+                        <div class="login-link">
+                            <span>or </span>
+                            <a href="#" class="login-account-link">Log In</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function togglePassword(fieldId) {
+            const passwordInput = document.getElementById(fieldId);
+            const passwordToggle = passwordInput.nextElementSibling;
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        }
+
+        // Form submission handler
+        document.querySelector('.signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const fullname = document.getElementById('fullname').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            
+            // Basic validation
+            if (!fullname || !email || !password || !confirmPassword) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+            
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters long');
+                return;
+            }
+            
+            alert('Account creation functionality would be implemented here. Name: ' + fullname + ', Email: ' + email);
+        });
+
+        // Real-time password confirmation validation
+        document.getElementById('confirm-password').addEventListener('input', function() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = this.value;
+            
+            if (confirmPassword && password !== confirmPassword) {
+                this.style.borderColor = '#ff6b6b';
+            } else {
+                this.style.borderColor = '';
+            }
+        });
+    </script>
+</body>
+</html>
+
